@@ -8,8 +8,6 @@ import router from './router'
 
 Vue.use(VueResource)
 Vue.use(VueLazyload, {
-    error: require('./assets/loading.svg'),
-    loading: require('./assets/loading.svg'),
     attempt: 1
   }
 )

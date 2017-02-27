@@ -1,9 +1,6 @@
 <template>
   <div class="recommand">
-    <div class="loading" v-if="loading">
-      {{loadingState}}
-    </div>
-    <div class="content" v-if="!loading">
+    <div class="content">
       <swiper :options="swiperOptionIn" class="swiper-position">
         <swiper-slide v-for="s in slider">
           <img class="recommand-swiper-img" v-lazy="s.pic" @click="jump(s)">
@@ -77,8 +74,6 @@
     },
     data () {
       return {
-        loadingState: '正在加载...',
-        loading: true,
         slider: [],
         radioList: [],
         songList: [],
@@ -120,7 +115,6 @@
     },
     created: function () {
       this.$store.dispatch('getRecommands').then((response) => {
-        this.loading = false
         this.slider = response.data.data.focus
         this.songList = response.data.data.hotdiss.list
         this.mvList = response.data.data.shoubomv.all
@@ -138,13 +132,6 @@
 <style scoped lang="less" rel="stylesheet/less">
   .recommand {
     margin-top: 50px;
-    .loading {
-      color: #999;
-      width: 100%;
-      height: 150px;
-      line-height: 150px;
-      text-align: center;
-    }
     .content {
       .swiper-position {
         position: relative;

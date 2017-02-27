@@ -1,10 +1,5 @@
 ﻿﻿<template>
   <div id="app">
-    <action-sheet></action-sheet>
-    <transition :name="routerViewAnimation">
-      <router-view v-show="!blurBgShow"></router-view>
-    </transition>
-
     <search v-show="!blurBgShow"
             @searchshow="rankshow=false"
             @searchhide="rankshow=true"></search>
@@ -348,15 +343,6 @@
     to {
       opacity: 1;
     }
-  }
-
-  img[lazy=loaded] {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-name: imgFadeIn;
-    animation-name: imgFadeIn;
   }
 
   img[lazy=error] {
